@@ -15,7 +15,7 @@ var expect = require('chai').expect;
 describe('gulp-page-json', function() {
   'use strict';
 
-  it('should build index.json', function (done) {
+  it('should build index.json and page*.json', function (done) {
     var test = function() {
       var files = [];
       return through.obj(
@@ -45,6 +45,30 @@ describe('gulp-page-json', function() {
     gulp.src(__dirname + "/fixtures/*.md")
       .pipe(frontMatter({property: 'data', remove: true}))
       .pipe(pageJson({numArticles:2}))
+      .pipe(test())
+      .pipe(assert.end(done));
+  });
+
+  it('should build page number correctly', function (done) {
+    var test = function() {
+      var files = [];
+      return through.obj(
+        function (file, enc, cb) { // collect all files
+          files.push(file);
+          return cb();
+        },
+        function(cb) { // test
+          var page1 = files[1];
+          expect(page1.path).to.equal("page1.json");
+          expect(JSON.parse(page1.contents).length).to.equal(3);
+          return cb();
+        }
+      );
+    };
+
+    gulp.src(__dirname + "/fixtures/*.md")
+      .pipe(frontMatter({property: 'data', remove: true}))
+      .pipe(pageJson({numArticles:10}))
       .pipe(test())
       .pipe(assert.end(done));
   });

@@ -34,7 +34,7 @@ module.exports = function(options) {
         page.push(posts[i]);
       }
       if (page.length) {
-        pageNum = (i+1)/numArticlesInPage;
+        pageNum = Math.ceil((i+1)/numArticlesInPage);
         pushJson.apply(this, ["page"+pageNum+".json", page]);
       }
       return cb();
