@@ -1,0 +1,42 @@
+{
+  "name": "gulp-page-json",
+  "version": "0.1.0",
+  "description": "Generates full index of all pages and pagination files in JSON format",
+  "license": "MIT",
+  "repository": "allenhwkim/gulp-page-json",
+  "author": {
+    "name": "Allen Kim",
+    "email": "allenhwkim@gmail.com",
+    "url": "http://allenkim.me"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "gulpplugin",
+    "angular",
+    "compile",
+    "html",
+    "rendering"
+  ],
+  "dependencies": {
+    "gulp": "^3.8.10",
+    "gulp-util": "^3.0.0",
+    "lodash": "^3.0.0",
+    "through2": "^0.6.1"
+  },
+  "devDependencies": {
+    "chai": "~1.7.2",
+    "event-stream": "^3.2.1",
+    "gulp-front-matter": "^1.2.1",
+    "mocha": "*",
+    "should": "^4.6.2",
+    "stream-assert": "^2.0.2"
+  }
+}
