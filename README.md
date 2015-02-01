@@ -34,9 +34,9 @@ Usage
 Source files example
 -----------------------
 
-  [post1.md](test/fixtures/1.md)
-  [post2.md](test/fixtures/2.md)
-  [post3.md](test/fixtures/3.md)
+  * [post1.md](test/fixtures/1.md)
+  * [post2.md](test/fixtures/2.md)
+  * [post3.md](test/fixtures/3.md)
 
 Output files example
 -----------------------
