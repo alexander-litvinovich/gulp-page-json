@@ -27,6 +27,8 @@ Usage
               fileAttrs: "data",            //default: data
               summaryMarker: "<!--MORE-->", //default: <!--more-->
               numArticles: 15               //default: 10
+            }, function(jsonFiles) {        // optional: custom callback 
+              console.log('jsonFiles', jsonFiles);
             }))
             .pipe(gulp.dest('build'));
     });

@@ -72,4 +72,14 @@ describe('gulp-page-json', function() {
       .pipe(test())
       .pipe(assert.end(done));
   });
+
+  it('should run callback if defined', function (done) {
+    gulp.src(__dirname + "/fixtures/*.md")
+      .pipe(frontMatter({property: 'data', remove: true}))
+      .pipe(pageJson({numArticles:10}, function(files) {
+        expect(files["index.json"]).to.ok;
+        expect(files["page1.json"]).to.ok;
+      }))
+     .pipe(assert.end(done));
+  });
 });

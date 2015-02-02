@@ -1,6 +1,6 @@
 {
   "name": "gulp-page-json",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Generates full index of all pages and pagination files in JSON format",
   "license": "MIT",
   "repository": "allenhwkim/gulp-page-json",

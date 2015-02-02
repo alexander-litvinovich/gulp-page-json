@@ -2,18 +2,20 @@ var gutil = require('gulp-util');
 var through = require('through2');
 
 /* global Buffer */
-module.exports = function(options) {
+module.exports = function(options, callback) {
   'use strict';
   options = options || {};
   var summaryMarker = options.summaryMarker || "<!--more-->";
   var fileAttrs = options.fileAttrs || "data";
   var numArticlesInPage = options.numArticles || 10;
   var posts = [];  // all data
+  var jsonFiles = {};
   var pushJson = function(path, obj) {
     this.push(new gutil.File({
       path: path,
       contents: new Buffer(JSON.stringify(obj, null, 2))
     }));
+    jsonFiles[path] = obj;
   };
   return through.obj(
     function (file, enc, cb) { // process all files and build summary
@@ -37,6 +39,7 @@ module.exports = function(options) {
         pageNum = Math.ceil((i+1)/numArticlesInPage);
         pushJson.apply(this, ["page"+pageNum+".json", page]);
       }
+      (typeof callback == 'function') && callback(jsonFiles);
       return cb();
     }
   );
